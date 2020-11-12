@@ -1,18 +1,25 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <SearchBar />
+    <ContactList :contactList='allContacts'/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { mapGetters } from 'vuex'
+
+import ContactList from '@/components/ContactList'
+import SearchBar from '@/components/SearchBar'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
-  }
+    SearchBar,
+    ContactList
+  },
+  computed: {
+    ...mapGetters(['allContacts']),   //get all contacts from local storage
+  },
 }
 </script>
+
